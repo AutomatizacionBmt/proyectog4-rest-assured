@@ -23,10 +23,10 @@ public class RedmineConfig {
     public static void setUp(){
 
         requestSpecification = new RequestSpecBuilder()
-                .setBaseUri("http://934ef3698e14.ngrok.io")
+                .setBaseUri("http://localhost:8081")
                 .setBasePath("/")
                 //Los que utilizan una url sin puerto comentar esta línea
-                //.setPort(8081)
+                .setPort(8081)
                 .addHeader("Content-Type", "application/json")
                 .addHeader("X-Redmine-API-Key","54d992219a4d120df54d5a72cb152e8b89d20d65")
                 .addFilter(new RequestLoggingFilter())
@@ -34,7 +34,7 @@ public class RedmineConfig {
                 .build();
 
         responseSpecification = new ResponseSpecBuilder()
-                .expectResponseTime(lessThan(3000L))
+                //.expectResponseTime(lessThan(3000L))
                 //.expectStatusCode(200)
                 .build();
 
