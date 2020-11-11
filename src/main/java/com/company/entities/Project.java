@@ -2,22 +2,33 @@ package com.company.entities;
 
 public class Project {
 
+    private Integer id;
     private String name;
     private String identifier;
     private String description;
-    private Boolean inherit_members;
+    private String homepage;
+    private Integer status;
     private Boolean is_public;
+    private Boolean inherit_members;
+    private String created_on;
+    private String updated_on;
+
 
     public Project(){
 
     }
 
-    public Project(String name, String identifier, String description, Boolean inherit_members, Boolean is_public) {
+    public Project(Integer id, String name, String identifier, String description, String homepage, Integer status, Boolean is_public, Boolean inherit_members, String created_on, String updated_on) {
+        this.id = id;
         this.name = name;
         this.identifier = identifier;
         this.description = description;
-        this.inherit_members = inherit_members;
+        this.homepage = homepage;
+        this.status = status;
         this.is_public = is_public;
+        this.inherit_members = inherit_members;
+        this.created_on = created_on;
+        this.updated_on = updated_on;
     }
 
     public String getName() {
@@ -60,14 +71,59 @@ public class Project {
         this.is_public = is_public;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getHomepage() {
+        return homepage;
+    }
+
+    public void setHomepage(String homepage) {
+        this.homepage = homepage;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public String getCreated_on() {
+        return created_on;
+    }
+
+    public void setCreated_on(String created_on) {
+        this.created_on = created_on;
+    }
+
+    public String getUpdated_on() {
+        return updated_on;
+    }
+
+    public void setUpdated_on(String updated_on) {
+        this.updated_on = updated_on;
+    }
+
     @Override
     public String toString() {
         return "Project{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", identifier='" + identifier + '\'' +
                 ", description='" + description + '\'' +
-                ", inherit_members=" + inherit_members +
+                ", homepage='" + homepage + '\'' +
+                ", status=" + status +
                 ", is_public=" + is_public +
+                ", inherit_members=" + inherit_members +
+                ", created_on='" + created_on + '\'' +
+                ", updated_on='" + updated_on + '\'' +
                 '}';
     }
 }
