@@ -16,8 +16,6 @@ public class RedmineOtherTest extends RedmineConfig {
     @Test
     public void testValidateResponseDataProject(){
 
-
-
         given()
                 .pathParam("idProject", 459).
         when()
@@ -75,8 +73,4 @@ public class RedmineOtherTest extends RedmineConfig {
         }
 
     }
-
-
-
-
 }
