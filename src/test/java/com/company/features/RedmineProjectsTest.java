@@ -8,6 +8,7 @@ import io.restassured.response.Response;
 import org.junit.Test;
 
 import static io.restassured.RestAssured.given;
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 
 public class RedmineProjectsTest extends RedmineConfig {
 
@@ -17,7 +18,7 @@ public class RedmineProjectsTest extends RedmineConfig {
 
         Project project = new Project();
         project.setName("RedmineProject");
-        project.setIdentifier("redmineproject997");
+        project.setIdentifier("redmineproject996");
         project.setDescription("Esta es una descripción");
         project.setInherit_members(false);
         project.setIs_public(true);
@@ -50,4 +51,15 @@ public class RedmineProjectsTest extends RedmineConfig {
 
     }
 
+    @Test
+    public void testProjectValidateSchemaJSON(){
+
+        given()
+                .pathParam("idProject",459).
+        when()
+                .get(RedmineEndpoints.SINGLE_REDMINE_PROJECTS_JSON).
+        then()
+                .statusCode(200)
+                .body(matchesJsonSchemaInClasspath("project_schema.json"));
+    }
 }
