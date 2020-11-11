@@ -1,6 +1,7 @@
 package com.company.features;
 
 import com.company.config.RedmineConfig;
+import com.company.util.RedmineEndpoints;
 import org.junit.Test;
 
 import static io.restassured.RestAssured.given;
@@ -12,7 +13,7 @@ public class RedmineTest extends RedmineConfig {
 
         given().
         when()
-                .get("issues.json").
+                .get(RedmineEndpoints.REDMINE_ISSUES_JSON).
         then()
                 //.log().all()
                 .statusCode(200);
@@ -32,7 +33,7 @@ public class RedmineTest extends RedmineConfig {
         given()
                 .body(issueBody).
         when()
-                .post("issues.json").
+                .post(RedmineEndpoints.REDMINE_ISSUES_JSON).
         then()
                 .statusCode(201);
     }
@@ -62,7 +63,7 @@ public class RedmineTest extends RedmineConfig {
                 .body(issueBody)
                 .pathParam("idIssue", 2252).
         when()
-                .put("issues/{idIssue}.json").
+                .put(RedmineEndpoints.SINGLE_REDMINE_ISSUES_JSON).
         then()
                 .statusCode(204);
     }
@@ -72,7 +73,7 @@ public class RedmineTest extends RedmineConfig {
         given()
                 .pathParam("IdIssue","2253").
         when()
-                .get("issues/{IdIssue}.json").
+                .get(RedmineEndpoints.SINGLE_REDMINE_ISSUES_JSON).
         then()
                 .statusCode(200);
 
