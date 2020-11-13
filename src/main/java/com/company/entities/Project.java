@@ -1,5 +1,7 @@
 package com.company.entities;
 
+import java.util.Map;
+
 public class Project {
 
     private Integer id;
@@ -12,6 +14,7 @@ public class Project {
     private Boolean inherit_members;
     private String created_on;
     private String updated_on;
+    private Map<Object, Object> parent;
 
 
     public Project(){
@@ -29,6 +32,20 @@ public class Project {
         this.inherit_members = inherit_members;
         this.created_on = created_on;
         this.updated_on = updated_on;
+    }
+
+    public Project(Integer id, String name, String identifier, String description, String homepage, Integer status, Boolean is_public, Boolean inherit_members, String created_on, String updated_on, Map<Object, Object> parent) {
+        this.id = id;
+        this.name = name;
+        this.identifier = identifier;
+        this.description = description;
+        this.homepage = homepage;
+        this.status = status;
+        this.is_public = is_public;
+        this.inherit_members = inherit_members;
+        this.created_on = created_on;
+        this.updated_on = updated_on;
+        this.parent = parent;
     }
 
     public String getName() {
@@ -109,6 +126,14 @@ public class Project {
 
     public void setUpdated_on(String updated_on) {
         this.updated_on = updated_on;
+    }
+
+    public Map<Object, Object> getParent() {
+        return parent;
+    }
+
+    public void setParent(Map<Object, Object> parent) {
+        this.parent = parent;
     }
 
     @Override

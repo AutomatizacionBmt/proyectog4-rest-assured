@@ -1,0 +1,7 @@
+{
+  "issue": {
+    "project_id": [PROJECT_ID],
+    "subject": "[SUBJECT]",
+    "priority_id": [PRIORITY_ID]
+  }
+}
