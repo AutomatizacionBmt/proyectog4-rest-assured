@@ -11,7 +11,10 @@ import org.junit.Test;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import static io.restassured.RestAssured.given;
@@ -91,12 +94,11 @@ public class RedmineOtherTest extends RedmineConfig {
                         .extract().response();
 
 
-        List<Object> projects = response.path("projects");
+        List<HashMap<Object,Object>> projects = response.path("projects");
 
 
-        for (Object project :projects ){
-            //System.out.println("Id Project: "+ (HashMap<Object, Object>)project.get("name"));
-            System.out.println("");
+        for (HashMap<Object,Object> project :projects ){
+            System.out.println("Name Project: "+ project.get("name"));
         }
     }
 
