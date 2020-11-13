@@ -17,8 +17,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.hasItems;
+import static org.hamcrest.Matchers.*;
 
 public class RedmineOtherTest extends RedmineConfig {
 
@@ -136,16 +135,20 @@ public class RedmineOtherTest extends RedmineConfig {
 
         //1. Colocar el archivo .json en nuestros resources
         //2. Parametrizar los campos a reemplazar
-        //2.- Leer el archivo y transaformarlo a un String
-        //3.- Remplazar el valor de los campos con la data de prueba
-        //4.- Realizar la petición
+        //3.- Leer el archivo
+        //4.- Transformar el archivo  a un String
+        //5.- Remplazar el valor de los campos con la data de prueba
+        //6.- Realizar la petición
 
         String jsonBody = "{}";
+        //3
         File jsonDataInFile = new File("src/main/resources/body_requests/issue.json");
 
         try {
+             //4
              jsonBody = FileUtils.readFileToString(jsonDataInFile, StandardCharsets.UTF_8);
 
+             //5
              jsonBody = jsonBody.replace("[PROJECT_ID]","1")
                      .replace("[SUBJECT]", "Este es un subject parametrizado")
                      .replace("[PRIORITY_ID]","1");
@@ -154,6 +157,7 @@ public class RedmineOtherTest extends RedmineConfig {
             e.printStackTrace();
         }
 
+        //6
         given()
                 .body(jsonBody).
                 when()
@@ -175,6 +179,64 @@ public class RedmineOtherTest extends RedmineConfig {
                 .statusCode(201);
     }
 
+    @Test
+    public void testUploadFileRedmine(){
+
+        File image = new File("src/main/resources/bdd.png");
+
+        Response response =
+                given().
+                        //multiPart("file", image)
+                        //.multiPart("", image).
+                        contentType("application/octet-stream")
+                        .body(image).
+                when()
+                        .post("/uploads.json?filename=bdd.png").
+                then()
+                        .statusCode(201)
+                        .extract().response();
+
+        String tokenFile = response.path("upload.token");
+
+        String issueWithFile = "{\n" +
+                "  \"issue\": {\n" +
+                "    \"project_id\": 1,\n" +
+                "    \"subject\": \"Issue creado por JH desde Postman\",\n" +
+                "    \"priority_id\": 4,\n" +
+                "    \"uploads\":[\n" +
+                "        {\n" +
+                "            \"token\": \""+tokenFile+"\",\n" +
+                "            \"filename\": \"bdd.png\",\n" +
+                "            \"description\": \"Una description\",\n" +
+                "            \"content_type\": \"image/png\"\n" +
+                "        }\n" +
+                "    ]\n" +
+                "  }\n" +
+                "}";
 
 
+        given()
+                .body(issueWithFile).
+                when()
+                .post(RedmineEndpoints.REDMINE_ISSUES_JSON).
+                then()
+                .statusCode(201);
+
+    }
+
+    @Test
+    public void getSingleIssueJSONAndValidateIfExistsFields(){
+
+        given()
+                .pathParam("idIssue", 69).
+        when()
+                .get(RedmineEndpoints.SINGLE_REDMINE_ISSUES_JSON).
+        then()
+                .statusCode(200)
+                .body("$", hasKey("issue"))
+                .body("issue", hasKey("id"))
+                .body("issue", hasKey("project"))
+                .body("issue", hasKey("subject"))
+                .body("issue.priority", hasKey("name"));
+    }
 }
