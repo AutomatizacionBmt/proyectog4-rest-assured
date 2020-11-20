@@ -2,7 +2,8 @@
 This repository to support the online course. This framework supports web services and BDD.
 
 José Hurtado<br />
-[@jhumbertoh](https://twitter.com/jhumbertoh)
+* Twitter : [@jhumbertoh](https://twitter.com/jhumbertoh) <br />
+* Linkedin: [@jhumbertoh](https://www.linkedin.com/in/jhumbertoh/)
 
 License
 =======
