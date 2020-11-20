@@ -11,6 +11,9 @@ You can use this code for your own personal learning and development. Please do 
 
 And do not use it for commercial purposes.
 
+## After you clone this repo, you must:
+    mvn clean install
+
 ## Running  all test
     mvn clean test
 
