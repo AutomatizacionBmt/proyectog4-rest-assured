@@ -10,11 +10,12 @@ import org.junit.runner.RunWith;
         "html:target/cucumber-reports/cucumber-pretty",
         "json:target/cucumber-reports/json-reports/Cucumber.json",
         "junit:target/cucumber-reports/junit-reports/Cucumber.xml"},
-        tags = {"@rest"},
+        tags = "@rest",
         glue = {"com.company.cucumber"},
         features = {"src/test/resources/features"},
         monochrome = true,
-        snippets = CucumberOptions.SnippetType.CAMELCASE)
+        snippets = CucumberOptions.SnippetType.CAMELCASE,
+        publish = true)
 public class RunCucumberTest {
 
 }

@@ -11,9 +11,9 @@
     <properties>
         <java.version>1.8</java.version>
         <maven.compiler.version>3.8.1</maven.compiler.version>
-        <restassured.version>4.3.1</restassured.version>
+        <restassured.version>4.3.2</restassured.version>
         <junit.version>4.13.1</junit.version>
-        <cucumber.version>5.7.0</cucumber.version>
+        <cucumber.version>6.9.0</cucumber.version>
     </properties>
 
     <dependencies>
