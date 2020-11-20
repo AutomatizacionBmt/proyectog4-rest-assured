@@ -1,4 +1,4 @@
-Feature: Rest - Redmine Testing - Issues
+Feature: REST - Redmine Testing - Issues
   As a user ...
   I want to...
 
@@ -6,7 +6,7 @@ Feature: Rest - Redmine Testing - Issues
   Scenario: Get issues by list - JSON
     Given System is ready to send requests
     When System sends a request to list issues service
-    Then The response status should be 500
+    Then The response status should be 200
 
   @rest
   Scenario: Get issues by id - JSON

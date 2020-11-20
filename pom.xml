@@ -63,7 +63,7 @@
         <dependency>
             <groupId>net.masterthought</groupId>
             <artifactId>cucumber-reporting</artifactId>
-            <version>5.2.2</version>
+            <version>5.4.0</version>
         </dependency>
     </dependencies>
 
@@ -84,13 +84,17 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.22.0</version>
                 <configuration>
+                    <!--Parallel Execution -->
+                    <parallel>methods</parallel>
+                    <useUnlimitedThreads>true</useUnlimitedThreads>
+                    <!--<perCoreThreadCount>false</perCoreThreadCount>-->
                     <testFailureIgnore>true</testFailureIgnore>
                 </configuration>
             </plugin>
             <plugin>
                 <groupId>net.masterthought</groupId>
                 <artifactId>maven-cucumber-reporting</artifactId>
-                <version>5.0.0</version>
+                <version>5.4.0</version>
                 <executions>
                     <execution>
                         <id>execution</id>
@@ -106,7 +110,6 @@
                             <jsonFiles>
                                 <param>**/*.json</param>
                             </jsonFiles>
-                            <!--<parallelTesting>false</parallelTesting>-->
                             <checkBuildResult>false</checkBuildResult>
                         </configuration>
                     </execution>
