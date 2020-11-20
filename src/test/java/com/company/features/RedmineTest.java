@@ -71,7 +71,7 @@ public class RedmineTest extends RedmineConfig {
     @Test
     public void obtenerUnIssueJSON(){
         given()
-                .pathParam("IdIssue","2253").
+                .pathParam("idIssue",2253).
         when()
                 .get(RedmineEndpoints.SINGLE_REDMINE_ISSUES_JSON).
         then()
