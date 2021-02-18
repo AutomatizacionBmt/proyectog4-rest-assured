@@ -21,12 +21,12 @@ public class Hooks {
     public static void setUp() {
 
         requestSpecification = new RequestSpecBuilder()
-                .setBaseUri("http://localhost:8081")
+                .setBaseUri("http://198.211.98.120:8081")
                 .setBasePath("/")
                 //Los que utilizan una url sin puerto comentar esta línea
                 .setPort(8081)
                 .addHeader("Content-Type", "application/json")
-                .addHeader("X-Redmine-API-Key", "54d992219a4d120df54d5a72cb152e8b89d20d65")
+                .addHeader("X-Redmine-API-Key", "89edaa063143731973b213d759c6945ef07bbb03")
                 .addFilter(new RequestLoggingFilter())
                 .addFilter(new ResponseLoggingFilter())
                 .build();

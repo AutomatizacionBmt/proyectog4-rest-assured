@@ -32,9 +32,9 @@ Feature: REST - Redmine Rest Testing - Projects
   Scenario: Get project by id - JSON
     Given System is ready to send requests
     When System send a request to get projects by id service
-      | id | 285 |
+      | id | 2 |
     Then The response status should be 200
     And The schema is "project_schema.json"
     And System should responds with response data project
-      | id   | 285                               |
-      | name | Redmine Project Sw Testing Dragon |
+      | id   | 2              |
+      | name | ProyectoPrueba |

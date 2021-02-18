@@ -12,11 +12,11 @@ Feature: REST - Redmine Testing - Issues
   Scenario: Get issues by id - JSON
     Given System is ready to send requests
     When System send a request to get issues service by id
-      | id | 840 |
+      | id | 3492 |
     Then The response status should be 200
     And System should responds with response data
-      | id          | 840                                                   |
-      | subject     | I cannot create a user.                               |
-      | description | As an admin user, I cannot create an user when xml... |
-      | start_date  | 2020-08-15                                            |
+      | id          | 3492                                 |
+      | subject     | Issue modificado por JHHA            |
+      | description | Esta es una descripcion paara prueba |
+      | start_date  | 2021-02-14                           |
 
